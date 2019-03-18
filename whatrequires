@@ -1,1 +1,6 @@
 # This file contains recursive sources that require this package
+R-Ecfun
+R-ROCR
+R-gmodels
+R-gplots
+R-seriation
