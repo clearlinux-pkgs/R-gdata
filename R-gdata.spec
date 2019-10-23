@@ -4,38 +4,53 @@
 #
 Name     : R-gdata
 Version  : 2.18.0
-Release  : 23
+Release  : 24
 URL      : https://cran.r-project.org/src/contrib/gdata_2.18.0.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/gdata_2.18.0.tar.gz
 Summary  : Various R Programming Tools for Data Manipulation
 Group    : Development/Tools
 License  : GPL-2.0
 Requires: R-gtools
-Requires: R-reshape
 BuildRequires : R-gtools
 BuildRequires : R-reshape
 BuildRequires : buildreq-R
+BuildRequires : util-linux
 
 %description
-- medical unit conversions ('ConvertMedUnits', 'MedUnits'),
-   - combining objects ('bindData', 'cbindX', 'combine', 'interleave'),
-   - character vector operations ('centerText', 'startsWith', 'trim'),
-   - factor manipulation ('levels', 'reorder.factor', 'mapLevels'),
-   - obtaining information about R objects ('object.size', 'elem', 'env',
-     'humanReadable', 'is.what', 'll', 'keep', 'ls.funs',
-     'Args','nPairs', 'nobs'),
-   - manipulating MS-Excel formatted files ('read.xls',
-     'installXLSXsupport', 'sheetCount', 'xlsFormats'),
-   - generating fixed-width format files ('write.fwf'),
-   - extricating components of date & time objects ('getYear', 'getMonth',
-     'getDay', 'getHour', 'getMin', 'getSec'),
-   - operations on columns of data frames  ('matchcols', 'rename.vars'),
-   - matrix operations ('unmatrix', 'upperTriangle', 'lowerTriangle'),
-   - operations on vectors ('case', 'unknownToNA', 'duplicated2', 'trimSum'),
-   - operations on data frames ('frameApply', 'wideByFactor'),
-   - value of last evaluated expression ('ans'), and
-   - wrapper for 'sample' that ensures consistent behavior for both
-     scalar and vector arguments ('resample').
+NAME
+Archive::Zip - Provide an interface to ZIP archive files.
+SYNOPSIS
+# Create a Zip file
+use Archive::Zip qw( :ERROR_CODES :CONSTANTS );
+my $zip = Archive::Zip->new();
+
+# Add a directory
+my $dir_member = $zip->addDirectory( 'dirname/' );
+
+# Add a file from a string with compression
+my $string_member = $zip->addString( 'This is a test', 'stringMember.txt' );
+$string_member->desiredCompressionMethod( COMPRESSION_DEFLATED );
+
+# Add a file from disk
+my $file_member = $zip->addFile( 'xyz.pl', 'AnotherName.pl' );
+
+# Save the Zip file
+unless ( $zip->writeToFileNamed('someZip.zip') == AZ_OK ) {
+die 'write error';
+}
+
+# Read a Zip file
+my $somezip = Archive::Zip->new();
+unless ( $somezip->read( 'someZip.zip' ) == AZ_OK ) {
+die 'read error';
+}
+
+# Change the compression type for a file in the Zip
+my $member = $somezip->memberNamed( 'stringMember.txt' );
+$member->desiredCompressionMethod( COMPRESSION_STORED );
+unless ( $zip->writeToFileNamed( 'someOtherZip.zip' ) == AZ_OK ) {
+die 'write error';
+}
 
 %prep
 %setup -q -c -n gdata
@@ -45,10 +60,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1569358416
+export SOURCE_DATE_EPOCH=1571835865
 
 %install
-export SOURCE_DATE_EPOCH=1569358416
+export SOURCE_DATE_EPOCH=1571835865
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "

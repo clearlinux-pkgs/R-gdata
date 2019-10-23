@@ -1,8 +1,6 @@
 # This file contains recursive sources that require this package
-R-Ecdat
 R-Ecfun
 R-PerformanceAnalytics
-R-ROCR
 R-dendextend
 R-gmodels
 R-gplots
