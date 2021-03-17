@@ -1,6 +1,2 @@
 # This file contains recursive sources that require this package
-R-Ecfun
 R-gmodels
-R-gplots
-R-spdep
-R-vcdExtra

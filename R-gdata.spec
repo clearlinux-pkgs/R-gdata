@@ -4,7 +4,7 @@
 #
 Name     : R-gdata
 Version  : 2.18.0
-Release  : 30
+Release  : 31
 URL      : https://cran.r-project.org/src/contrib/gdata_2.18.0.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/gdata_2.18.0.tar.gz
 Summary  : Various R Programming Tools for Data Manipulation
@@ -44,10 +44,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1589583013
+export SOURCE_DATE_EPOCH=1616003350
 
 %install
-export SOURCE_DATE_EPOCH=1589583013
+export SOURCE_DATE_EPOCH=1616003350
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
