@@ -7,7 +7,7 @@
 #
 Name     : R-gdata
 Version  : 3.0.0
-Release  : 55
+Release  : 56
 URL      : https://cran.r-project.org/src/contrib/gdata_3.0.0.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/gdata_3.0.0.tar.gz
 Summary  : Various R Programming Tools for Data Manipulation
